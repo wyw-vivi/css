@@ -52,6 +52,9 @@
     background-clip: text;
     -webkit-background-clip: text;
     padding-right: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .row {
     display: flex;
@@ -65,25 +68,59 @@
   .column .column-item {
     flex: 1;
   }
-  .pane-box1 {
+  .pane-box {
+    width: 450px;
+    position: relative;
+    padding: 10px 20px;
+    font-size: 20px;
+  }
+  .pane-box ul {
+    width: 100%;
+    height: calc(100% - 30px);
+    display: flex;
+    flex-direction: column;
+  }
+  .pane-box ul li {
+    flex: 1;
+  }
+  .pane-box ul li:not(:nth-last-of-type(1)) {
+    border-bottom: 1px dashed var(--border-color);
+  }
+  .pane-box ul li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .pane-box ul li span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .pane-box ul li span:nth-of-type(1) {
+    width: 100px;
+    color: var(--list-color);
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .pane-box ul li span:nth-of-type(2) {
+    width: calc(100% - 100px);
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 200;
+  }
+  .pane-box1, .pane-box3 {
     --start-color: #ffa000;
     --end-color: #6e4620;
     --border-color: #6c431f;
     --list-color: #ffb500;
-    position: relative;
-    padding: 10px 20px;
-    font-size: 20px;
   }
-  .pane-box3 {
+  .pane-box2, .pane-box4 {
     --start-color: #d94453;
     --end-color: #79304a;
     --border-color: #703146;
     --list-color: #ff7569;
-    position: relative;
-    padding: 10px 20px;
-    font-size: 20px;
   }
-  .pane-box3 .title-box {
+  .pane-box2 .title-box, .pane-box4 .title-box {
     padding-left: 30px;
   }
   .pane-box1::after {
@@ -105,48 +142,15 @@
     filter: drop-shadow(0 2px 3px var(--start-color)) drop-shadow(0 4px 4px var(--start-color))
             drop-shadow(0 5px 5px var(--start-color)) drop-shadow(0 0 40px var(--start-color))
             drop-shadow(0 0 100px var(--start-color));
-    clip-path: polygon(0 0, calc(100% - 49px) 0, 100% 49px, 100% calc(100% + 2px), 0 calc(100% + 2px));
+    clip-path: polygon(0 0, calc(100% - 48px) 0, calc(100% + 1px) 48px, calc(100% + 1px) calc(100% + 1px), 0 calc(100% + 1px));
   }
-  .pane-box3::after {
+  .rotate-y-180::before, .rotate-y-180::after {
     transform: rotateY(180deg);
-  }
-  .pane-box1 ul {
-    width: 100%;
-    height: calc(100% - 30px);
-    display: flex;
-    flex-direction: column;
-  }
-  .pane-box1 ul li {
-    flex: 1;
-  }
-  .pane-box1 ul li:not(:nth-last-of-type(1)) {
-    border-bottom: 1px dashed var(--border-color);
-  }
-  .pane-box1 ul li {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-  .pane-box1 ul li span {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-  .pane-box1 ul li span:nth-of-type(1) {
-    width: 100px;
-    color: var(--list-color);
-    font-size: 18px;
-    font-weight: bold;
-  }
-  .pane-box1 ul li span:nth-of-type(2) {
-    color: #FFF;
-    font-size: 14px;
-    font-weight: 200;
   }
 </style>
 <body>
   <header>
-    <div class="pane-box1">
+    <div class="pane-box pane-box1">
       <div class="title-box">
         <div class="title ellipsis" style="--title-start-color: #ffb500; --title-end-color: #ffdccc; --title-size: 23px;">一个大标题</div>
         <div class="link">详情</div>
@@ -166,7 +170,7 @@
         </li>
       </ul>
     </div>
-    <div class="pane-box1 pane-box3">
+    <div class="pane-box pane-box1 pane-box2 rotate-y-180">
       <div class="title-box">
         <div class="title ellipsis" style="--title-start-color: #fe776a; --title-end-color: #ffd0c8; --title-size: 23px;">一个大标题</div>
         <div class="link">详情</div>
@@ -178,7 +182,7 @@
         </li>
         <li>
           <span>013-XXX</span>
-          <span>XXX、XXXXX、XXXXXXX、XXXXX、XXXX</span>
+          <span>XXX、XXXXX、XXXXXXX、XXXXX、XXXX、XXXXXXX、XXXXX、XXXX</span>
         </li>
         <li>
           <span>022-XXX</span>
