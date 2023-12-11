@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 100px 0 0 0;
+        background: #000;
+      }
+      .text {
+        font-size: 20px;
+        font-weight: bold;
+        width: 9em;
+        margin: 0 auto;
+      }
+      .text > div {
+        margin: 100px 0;
+      }
+      .text2 {
+        text-wrap: nowrap;
+      }
+      .text2 span {
+        position: relative;
+      }
+      .text2 span::before {
+        content: var(--content);
+        display: inline-block;
+        color: transparent;
+        background: linear-gradient(180deg, #fff, #fff 50%, transparent)
+          no-repeat;
+        -webkit-background-clip: text;
+        background-clip: text;
+        background-size: 100% 200%;
+        background-position: 0 0;
+        opacity: 0;
+        animation: fade2 var(--anitime) linear var(--delaytime) infinite;
+      }
+      
+      .text2 span::after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        top: 100%;
+        left: 0;
+        color: #fff;
+        border-radius: 50%;
+        box-shadow: 0px 0px;
+        animation: move2 var(--anitime) linear var(--delaytime) infinite;
+        opacity: 0.8;
+      }
+      @keyframes fade2 {
+        0% {
+          opacity: 0;
+          transform: translateY(-.5em) scale(0.8);
+        }
+        5% {
+          opacity: 1;
+          transform: translateY(0px) scale(1) translateX(0px) rotate(0);
+          background-position: 0 0;
+        }
+        10%,30%,50%,70%,90% {
+          transform: translateX(-1px) rotate(1deg);
+        }
+        20%,40%,60%,80% {
+          transform: translateX(1px) rotate(-1deg);
+        }
+        100% {
+          transform: translateX(0px) rotate(0);
+          background-position: 0 200%;
+        }
+      }
+      
+      @keyframes move2 {
+        0% {
+          transform: translateY(0);
+          opacity: 0;
+          box-shadow: 0px 0px, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent,
+                      0px 0px, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent,
+                      0px 0px transparent, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent,
+                      0px 0px transparent, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent,
+                      0px 0px transparent, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent,
+                      0px 0px transparent, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent;
+        }
+        10% {
+          box-shadow: 0px 20px, 5px 0px transparent, 10px 40px, 15px 0px transparent,
+                      0px 30px, 5px 0px transparent, 10px 40px, 15px 0px transparent,
+                      0px 0px transparent, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent,
+                      0px 0px transparent, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent,
+                      0px 0px transparent, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent,
+                      0px 0px transparent, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent;
+        }
+        20% {
+          box-shadow: 0px 40px, 5px 20px, 10px 60px, 15px 0px transparent,
+                      0px 50px, 5px 30px, 10px 60px, 15px 40px transparent,
+                      0px 20px, 5px 0px transparent, 10px 40px, 15px 0px transparent,
+                      0px 0px transparent, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent,
+                      0px 0px transparent, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent,
+                      0px 0px transparent, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent;
+        }
+        30% {
+          box-shadow: 0px 60px, 5px 40px, 10px 80px transparent, 15px 60px,
+                      0px 70px, 5px 50px, 10px 80px transparent, 15px 60px,
+                      0px 40px, 5px 20px, 10px 60px, 15px 0px transparent,
+                      0px 20px, 5px 0px transparent, 10px 40px, 15px 0px transparent,
+                      0px 0px transparent, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent,
+                      0px 0px transparent, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent;
+        }
+        40% {
+          transform: translateY(-.5em);
+          box-shadow: 0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 60px, 5px 50px, 10px 80px transparent, 15px 60px,
+                      0px 40px, 5px 20px, 10px 60px, 15px 0px transparent,
+                      0px 20px, 5px 0px transparent, 10px 40px, 15px 0px transparent,
+                      0px 0px transparent, 5px 0px transparent, 10px 20px transparent, 15px 0px transparent;
+        }
+        50% {
+          transform: translateY(-.5em);
+          box-shadow: 0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 60px, 5px 50px, 10px 80px transparent, 15px 60px,
+                      0px 40px, 5px 20px, 10px 60px, 15px 0px transparent,
+                      0px 20px, 5px 0px transparent, 10px 40px, 15px 0px transparent;
+        }
+        60% {
+          transform: translateY(-.5em);
+          box-shadow: 0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 60px, 5px 50px, 10px 80px transparent, 15px 60px,
+                      0px 40px, 5px 20px, 10px 60px, 15px 0px transparent;
+        }
+        70% {
+          transform: translateY(-.5em);
+          opacity: 1;
+          box-shadow: 0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 60px, 5px 50px, 10px 80px transparent, 15px 60px;
+        }
+        100% {
+          transform: translateY(-.5em);
+          opacity: 0;
+          box-shadow: 0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      0px 80px transparent, 5px 80px transparent, 10px 80px transparent, 15px 80px transparent,
+                      
+                      20px 80px transparent, 25px 80px transparent, 30px 80px transparent, 35px 80px transparent,
+                      20px 80px transparent, 25px 80px transparent, 30px 80px transparent, 35px 80px transparent,
+                      20px 80px transparent, 25px 80px transparent, 30px 80px transparent, 35px 80px transparent,
+                      20px 80px transparent, 25px 80px transparent, 30px 80px transparent, 35px 80px transparent,
+                      20px 80px transparent, 25px 80px transparent, 30px 80px transparent, 35px 80px transparent,
+                      20px 80px transparent, 25px 80px transparent, 30px 80px transparent, 35px 80px transparent;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text">
+      <div class="text2">
+        <span style="--anitime: 4s;--delaytime: 0.5s;--content:'巴';"></span>
+        <span style="--anitime: 4.25s;--delaytime: 0.5s;--content:'啦';"></span>
+        <span style="--anitime: 5.5s;--delaytime: 0.5s;--content:'啦';"></span>
+        <span style="--anitime: 3.2s;--delaytime: 0.5s;--content:'能';"></span>
+        <span style="--anitime: 3s;--delaytime: 0.5s;--content:'量';"></span>
+        <span style="--anitime: 4.5s;--delaytime: 0.5s;--content:'乌';"></span>
+        <span style="--anitime: 3.8s;--delaytime: 0.5s;--content:'卡';"></span>
+        <span style="--anitime: 3.35s;--delaytime: 0.5s;--content:'拉';"></span>
+        <span style="--anitime: 2.7s;--delaytime: 0.5s;--content:'卡';"></span>
+      </div>
+    </div>
+  </body>
+</html>
